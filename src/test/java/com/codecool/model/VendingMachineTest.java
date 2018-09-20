@@ -17,6 +17,7 @@ class VendingMachineTest {
 
     private VendingMachine vendingMachine;
     private static Map<CoinTypes, Integer> initialMachineCoins;
+    private static Map<SnackTypes, Integer> initialMachineSnacks;
 
     @BeforeAll
     static void init() {
@@ -24,11 +25,15 @@ class VendingMachineTest {
         initialMachineCoins.put(CoinTypes.DIME, 20);
         initialMachineCoins.put(CoinTypes.NICKLE, 20);
         initialMachineCoins.put(CoinTypes.QUARTER, 20);
+        initialMachineSnacks.put(SnackTypes.CANDY, 10);
+        initialMachineSnacks.put(SnackTypes.CHIPS, 5);
+        initialMachineSnacks.put(SnackTypes.COLA, 20);
     }
 
     @BeforeEach
     void initForTest() {
-        this.vendingMachine = new VendingMachine(initialMachineCoins);
+        this.vendingMachine = new VendingMachine(initialMachineCoins,
+                                                initialMachineSnacks);
     }
 
     @ParameterizedTest
