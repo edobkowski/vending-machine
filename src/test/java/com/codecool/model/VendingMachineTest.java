@@ -36,4 +36,9 @@ class VendingMachineTest {
     void acceptCoinTest_Accepted(CoinTypes coin) {
         assertTrue(vendingMachine.acceptCoin(coin));
     }
+
+    @Test
+    void acceptCoinTest_NotAccepted() {
+        assertFalse(vendingMachine.acceptCoin(CoinTypes.PENCE));
+    }
 }
