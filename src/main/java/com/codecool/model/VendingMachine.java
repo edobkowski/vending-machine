@@ -56,7 +56,10 @@ public class VendingMachine {
     }
 
     public double returnChange() {
-        return getChange();
+        double change = getChange();
+        this.currentSum = 0.0;
+
+        return change;
     }
 
     public double getChange() {
