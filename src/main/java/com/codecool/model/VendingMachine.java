@@ -1,6 +1,7 @@
 package com.codecool.model;
 
 import com.codecool.helpers.CoinTypes;
+import com.codecool.helpers.SnackNotAvailableException;
 import com.codecool.helpers.SnackTypes;
 
 import java.util.HashMap;
@@ -68,6 +69,34 @@ public class VendingMachine {
     public boolean isAvailable(SnackTypes snack) {
         Integer snackAmount = this.snacksAmount.get(snack);
         return  (snackAmount != null && !snackAmount.equals(0));
+    }
+
+    public void decrementSelectedSnackAmount(SnackTypes snack) throws SnackNotAvailableException {
+        Integer currentAmount = this.snacksAmount.get(snack);
+        if(currentAmount == null || currentAmount.equals(0)) {
+            throw new SnackNotAvailableException("Snack not available");
+        }
+        this.snacksAmount.put(snack, currentAmount-1);
+    }
+
+    public Map<CoinTypes, Integer> getCoinsAmount() {
+        return coinsAmount;
+    }
+
+    public void setCoinsAmount(Map<CoinTypes, Integer> coinsAmount) {
+        this.coinsAmount = coinsAmount;
+    }
+
+    public Map<SnackTypes, Integer> getSnacksAmount() {
+        return snacksAmount;
+    }
+
+    public void setSnacksAmount(Map<SnackTypes, Integer> snacksAmount) {
+        this.snacksAmount = snacksAmount;
+    }
+
+    public double getCurrentSum() {
+        return currentSum;
     }
 
     private double round(double number) {
