@@ -26,7 +26,7 @@ class VendingMachineTest {
         initialMachineCoins.put(CoinTypes.NICKLE, 20);
         initialMachineCoins.put(CoinTypes.QUARTER, 20);
         initialMachineSnacks.put(SnackTypes.CANDY, 10);
-        initialMachineSnacks.put(SnackTypes.CHIPS, 5);
+        initialMachineSnacks.put(SnackTypes.CHIPS, 0);
         initialMachineSnacks.put(SnackTypes.COLA, 20);
     }
 
@@ -72,5 +72,12 @@ class VendingMachineTest {
         double actualChange = vendingMachine.getChange();
 
         assertEquals(expectedChange, actualChange);
+    }
+
+    @Test
+    void productAvailabilityTest() {
+        assertTrue(vendingMachine.isAvaible(SnackTypes.CANDY));
+        assertTrue(vendingMachine.isAvaible(SnackTypes.COLA));
+        assertFalse(vendingMachine.isAvaible(SnackTypes.CHIPS));
     }
 }
