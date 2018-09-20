@@ -20,22 +20,23 @@ public class VendingMachine {
     }
 
     public boolean acceptCoin(CoinTypes coin) {
-        if(coin.getSize() == 21.21 && coin.getWeight() == 5.0) {
+        if(coin.getSize() == CoinTypes.NICKLE.getSize()
+                && coin.getWeight() == CoinTypes.NICKLE.getWeight()) {
             this.coinsAmount.putIfAbsent(coin, 1);
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
-            currentSum += 0.05;
+            this.currentSum += CoinTypes.NICKLE.getValue();
             return true;
         }
-        if(coin.getSize() == 17.91 && coin.getWeight() == 2.268) {
-            this.coinsAmount.putIfAbsent(coin, 1);
+        if(coin.getSize() == CoinTypes.DIME.getSize()
+                && coin.getWeight() == CoinTypes.DIME.getWeight()) {
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
-            currentSum += 0.1;
+            this.currentSum += CoinTypes.DIME.getValue();
             return true;
         }
-        if(coin.getSize() == 24.26 && coin.getWeight() == 5.67) {
-            this.coinsAmount.putIfAbsent(coin, 1);
+        if(coin.getSize() == CoinTypes.QUARTER.getSize()
+                && coin.getWeight() == CoinTypes.QUARTER.getWeight()) {
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
-            currentSum += 0.25;
+            this.currentSum += CoinTypes.QUARTER.getValue();
             return true;
         }
         return false;
