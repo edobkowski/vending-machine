@@ -14,8 +14,9 @@ public class VendingMachine {
     private SnackTypes selectedSnack;
     private double currentSum;
 
-    public VendingMachine(Map<CoinTypes, Integer> coinsAmount) {
+    public VendingMachine(Map<CoinTypes, Integer> coinsAmount, Map<SnackTypes, Integer> snacksAmount) {
         this.coinsAmount = coinsAmount;
+        this.snacksAmount = snacksAmount;
         this.currentSum = 0.0;
     }
 
