@@ -61,12 +61,12 @@ class VendingMachineTest {
     @Test
     void getChangeTest() throws CoinNotAvailableException {
         vendingMachine.setSelectedSnack(SnackTypes.CANDY);
-        System.out.println(vendingMachine.getCoinsSum());
         vendingMachine.acceptCoin(CoinTypes.QUARTER);
         vendingMachine.acceptCoin(CoinTypes.NICKLE);
         vendingMachine.acceptCoin(CoinTypes.DIME);
         vendingMachine.acceptCoin(CoinTypes.QUARTER);
         vendingMachine.acceptCoin(CoinTypes.NICKLE);
+        vendingMachine.acceptCoin(CoinTypes.DIME);
 
         double expectedChange = 0.15;
         double actualChange = vendingMachine.returnChange();
