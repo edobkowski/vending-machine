@@ -45,4 +45,12 @@ public class VendingMachine {
     public double getSum() {
         return Math.round(this.currentSum*100.0)/100.0;
     }
+
+    public SnackTypes getSelectedSnack() {
+        return selectedSnack;
+    }
+
+    public void setSelectedSnack(SnackTypes selectedSnack) {
+        this.selectedSnack = selectedSnack;
+    }
 }
