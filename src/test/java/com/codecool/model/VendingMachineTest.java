@@ -1,12 +1,12 @@
 package com.codecool.model;
 
 import com.codecool.helpers.CoinTypes;
+import com.codecool.helpers.SnackTypes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,5 +51,21 @@ class VendingMachineTest {
         double actualSum = vendingMachine.getSum();
 
         assertEquals(expectedSum, actualSum);
+    }
+
+    @Test
+    void getChangeTest() {
+        vendingMachine.setSelectedSnack(SnackTypes.CANDY);
+        vendingMachine.acceptCoin(CoinTypes.DIME);
+        vendingMachine.acceptCoin(CoinTypes.QUARTER);
+        vendingMachine.acceptCoin(CoinTypes.NICKLE);
+        vendingMachine.acceptCoin(CoinTypes.DIME);
+        vendingMachine.acceptCoin(CoinTypes.QUARTER);
+        vendingMachine.acceptCoin(CoinTypes.NICKLE);
+
+        double expectedChange = 0.15;
+        double actualChange = vendingMachine.getChange();
+
+        assertEquals(expectedChange, actualChange);
     }
 }
