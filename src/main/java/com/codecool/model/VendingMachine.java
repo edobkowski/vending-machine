@@ -23,21 +23,25 @@ public class VendingMachine {
         if(coin.getSize() == 21.21 && coin.getWeight() == 5.0) {
             this.coinsAmount.putIfAbsent(coin, 1);
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
+            currentSum += 0.05;
             return true;
         }
         if(coin.getSize() == 17.91 && coin.getWeight() == 2.268) {
             this.coinsAmount.putIfAbsent(coin, 1);
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
+            currentSum += 0.1;
             return true;
         }
         if(coin.getSize() == 24.26 && coin.getWeight() == 5.67) {
             this.coinsAmount.putIfAbsent(coin, 1);
             this.coinsAmount.computeIfPresent(coin, (key, value) -> value++);
+            currentSum += 0.25;
             return true;
         }
         return false;
     }
 
     public double getSum() {
+        return Math.round(this.currentSum*100.0)/100.0;
     }
 }

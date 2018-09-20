@@ -41,4 +41,15 @@ class VendingMachineTest {
     void acceptCoinTest_NotAccepted() {
         assertFalse(vendingMachine.acceptCoin(CoinTypes.PENCE));
     }
+
+    @Test
+    void acceptCoinTest_SummingValues() {
+        vendingMachine.acceptCoin(CoinTypes.DIME);
+        vendingMachine.acceptCoin(CoinTypes.QUARTER);
+        vendingMachine.acceptCoin(CoinTypes.NICKLE);
+        double expectedSum = 0.4;
+        double actualSum = vendingMachine.getSum();
+
+        assertEquals(expectedSum, actualSum);
+    }
 }
