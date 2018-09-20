@@ -73,6 +73,9 @@ class VendingMachineTest {
         double expectedChange = 0.15;
         double actualChange = vendingMachine.getChange();
 
+        double expectedMachineCoinsSum = 0.65;
+        double actualMachineCoinsSum = vendingMachine.getCoinsSum();
+
         assertEquals(expectedChange, actualChange);
     }
 
