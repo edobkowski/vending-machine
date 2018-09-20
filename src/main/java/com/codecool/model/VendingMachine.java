@@ -54,6 +54,10 @@ public class VendingMachine {
         this.selectedSnack = selectedSnack;
     }
 
+    public double returnChange() {
+        return getChange();
+    }
+
     public double getChange() {
         return round(this.currentSum-this.selectedSnack.getPrice());
     }
