@@ -63,6 +63,11 @@ public class VendingMachine {
         return round(this.currentSum-this.selectedSnack.getPrice());
     }
 
+    public boolean isAvailable(SnackTypes snack) {
+        Integer snackAmount = this.snacksAmount.get(snack);
+        return  (snackAmount != null && !snackAmount.equals(0));
+    }
+
     private double round(double number) {
         return Math.round(number*100.0)/100.0;
     }
