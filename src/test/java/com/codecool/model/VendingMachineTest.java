@@ -25,6 +25,7 @@ class VendingMachineTest {
         initialMachineCoins.put(CoinTypes.DIME, 20);
         initialMachineCoins.put(CoinTypes.NICKLE, 20);
         initialMachineCoins.put(CoinTypes.QUARTER, 20);
+        initialMachineSnacks = new HashMap<>();
         initialMachineSnacks.put(SnackTypes.CANDY, 10);
         initialMachineSnacks.put(SnackTypes.CHIPS, 0);
         initialMachineSnacks.put(SnackTypes.COLA, 20);
