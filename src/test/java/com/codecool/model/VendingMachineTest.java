@@ -76,8 +76,8 @@ class VendingMachineTest {
 
     @Test
     void productAvailabilityTest() {
-        assertTrue(vendingMachine.isAvaible(SnackTypes.CANDY));
-        assertTrue(vendingMachine.isAvaible(SnackTypes.COLA));
-        assertFalse(vendingMachine.isAvaible(SnackTypes.CHIPS));
+        assertTrue(vendingMachine.isAvailable(SnackTypes.CANDY));
+        assertTrue(vendingMachine.isAvailable(SnackTypes.COLA));
+        assertFalse(vendingMachine.isAvailable(SnackTypes.CHIPS));
     }
 }
