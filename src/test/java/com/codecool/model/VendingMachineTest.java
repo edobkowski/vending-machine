@@ -1,6 +1,7 @@
 package com.codecool.model;
 
 import com.codecool.helpers.CoinTypes;
+import com.codecool.helpers.SnackNotAvailableException;
 import com.codecool.helpers.SnackTypes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -80,5 +81,16 @@ class VendingMachineTest {
         assertTrue(vendingMachine.isAvailable(SnackTypes.CANDY));
         assertTrue(vendingMachine.isAvailable(SnackTypes.COLA));
         assertFalse(vendingMachine.isAvailable(SnackTypes.CHIPS));
+    }
+
+    @Test
+    void decrementSnackAmountTest() throws SnackNotAvailableException {
+        vendingMachine.decrementSelectedSnackAmount(SnackTypes.CANDY);
+        int expectedValue = 9;
+        int actualValue = vendingMachine.getSnacksAmount().get(SnackTypes.CANDY);
+
+        assertEquals(expectedValue, actualValue);
+        assertThrows(SnackNotAvailableException.class, () ->
+                vendingMachine.decrementSelectedSnackAmount(SnackTypes.CHIPS));
     }
 }
