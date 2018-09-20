@@ -1,5 +1,6 @@
 package com.codecool.model;
 
+import com.codecool.helpers.CoinNotAvailableException;
 import com.codecool.helpers.CoinTypes;
 import com.codecool.helpers.SnackNotAvailableException;
 import com.codecool.helpers.SnackTypes;
@@ -17,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class VendingMachineTest {
 
     private VendingMachine vendingMachine;
-    private static Map<CoinTypes, Integer> initialMachineCoins;
-    private static Map<SnackTypes, Integer> initialMachineSnacks;
+    private Map<CoinTypes, Integer> initialMachineCoins;
+    private Map<SnackTypes, Integer> initialMachineSnacks;
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    void initForTest() {
         initialMachineCoins = new HashMap<>();
         initialMachineCoins.put(CoinTypes.DIME, 20);
         initialMachineCoins.put(CoinTypes.NICKLE, 20);
@@ -30,10 +31,7 @@ class VendingMachineTest {
         initialMachineSnacks.put(SnackTypes.CANDY, 10);
         initialMachineSnacks.put(SnackTypes.CHIPS, 0);
         initialMachineSnacks.put(SnackTypes.COLA, 20);
-    }
 
-    @BeforeEach
-    void initForTest() {
         this.vendingMachine = new VendingMachine(initialMachineCoins,
                                                 initialMachineSnacks);
     }
@@ -61,9 +59,9 @@ class VendingMachineTest {
     }
 
     @Test
-    void getChangeTest() {
+    void getChangeTest() throws CoinNotAvailableException {
         vendingMachine.setSelectedSnack(SnackTypes.CANDY);
-        vendingMachine.acceptCoin(CoinTypes.DIME);
+        System.out.println(vendingMachine.getCoinsSum());
         vendingMachine.acceptCoin(CoinTypes.QUARTER);
         vendingMachine.acceptCoin(CoinTypes.NICKLE);
         vendingMachine.acceptCoin(CoinTypes.DIME);
@@ -71,12 +69,13 @@ class VendingMachineTest {
         vendingMachine.acceptCoin(CoinTypes.NICKLE);
 
         double expectedChange = 0.15;
-        double actualChange = vendingMachine.getChange();
+        double actualChange = vendingMachine.returnChange();
 
-        double expectedMachineCoinsSum = 0.65;
+        double expectedMachineCoinsSum = 8.65;
         double actualMachineCoinsSum = vendingMachine.getCoinsSum();
 
         assertEquals(expectedChange, actualChange);
+        assertEquals(expectedMachineCoinsSum, actualMachineCoinsSum);
     }
 
     @Test
